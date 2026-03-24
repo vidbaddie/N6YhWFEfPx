@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,9 +28,30 @@
     .video-container img {
         width: 100%;
         display: block;
-        filter: brightness(0.7);
+        filter: brightness(0.6);
     }
 
+    /* TEXT OVERLAY */
+    .video-text {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        color: white;
+        z-index: 2;
+    }
+
+    .video-text h2 {
+        margin: 0;
+        font-size: 24px;
+    }
+
+    .video-text p {
+        margin-top: 5px;
+        font-size: 14px;
+        opacity: 0.8;
+    }
+
+    /* PLAY BUTTON */
     .play-button {
         position: absolute;
         top: 50%;
@@ -44,6 +65,7 @@
         justify-content: center;
         align-items: center;
         transition: 0.3s;
+        z-index: 2;
     }
 
     .play-button:hover {
@@ -63,8 +85,16 @@
 
 <body>
 
-<a href="https://url-kamu.com" target="_blank" class="video-container">
-    <img src="https://cdn.aceimg.com/ba23a7cbe.jpg" alt="Video Thumbnail">
+<a href="https://your-url.com" target="_blank" class="video-container">
+    <img src="https://cdn.aceimg.com/364f13537.png" alt="Video Thumbnail">
+
+    <!-- TEXT -->
+    <div class="video-text">
+        <h2>Your Video Title</h2>
+        <p>Short description goes here</p>
+    </div>
+
+    <!-- PLAY BUTTON -->
     <div class="play-button"></div>
 </a>
 
