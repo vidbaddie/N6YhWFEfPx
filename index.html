@@ -8,7 +8,7 @@
 <style>
     body {
         margin: 0;
-        background: #0d0d0d;
+        background: #0f0f0f;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
         display: flex;
         justify-content: center;
@@ -22,71 +22,127 @@
         max-width: 720px;
     }
 
-    /* TITLE (USA STYLE) */
     .title {
         margin-bottom: 12px;
-        text-align: left;
     }
 
     .title h2 {
         margin: 0;
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 600;
     }
 
     .title p {
         margin-top: 4px;
-        font-size: 14px;
+        font-size: 13px;
         color: #aaa;
     }
 
-    /* VIDEO CARD */
     .video-container {
         position: relative;
         border-radius: 12px;
         overflow: hidden;
         cursor: pointer;
-        transition: transform 0.2s ease;
-    }
-
-    .video-container:hover {
-        transform: scale(1.02);
+        background: black;
     }
 
     .video-container img {
         width: 100%;
         display: block;
+        opacity: 0.85;
     }
 
-    /* PLAY BUTTON (MODERN) */
+    /* BLUE PLAY BUTTON */
     .play-button {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 70px;
-        height: 70px;
-        background: rgba(0, 0, 0, 0.6);
+        width: 80px;
+        height: 80px;
+        background: rgba(0, 123, 255, 0.9);
         border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
-        backdrop-filter: blur(4px);
-        transition: 0.3s;
-    }
-
-    .play-button:hover {
-        background: rgba(255, 0, 0, 0.9);
-        transform: translate(-50%, -50%) scale(1.1);
     }
 
     .play-button::before {
         content: '';
         border-style: solid;
-        border-width: 12px 0 12px 20px;
+        border-width: 15px 0 15px 25px;
         border-color: transparent transparent transparent white;
-        margin-left: 4px;
+        margin-left: 5px;
     }
+
+    /* CONTROLS OVERLAY (INSIDE IMAGE - LIKE REAL PLAYER) */
+    .controls-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 8px;
+        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 4px;
+        background: rgba(255,255,255,0.3);
+        border-radius: 2px;
+        overflow: hidden;
+        margin-bottom: 6px;
+    }
+
+    .progress {
+        width: 25%;
+        height: 100%;
+        background: #fff;
+    }
+
+    .controls-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+    }
+
+    .left {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .icon {
+        width: 14px;
+        height: 14px;
+        background: #fff;
+        mask-size: cover;
+        -webkit-mask-size: cover;
+        opacity: 0.9;
+    }
+
+    .play-icon {
+        mask: url('https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/play-fill.svg') no-repeat center;
+        -webkit-mask: url('https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/play-fill.svg') no-repeat center;
+    }
+
+    .volume-icon {
+        mask: url('https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/volume-up-fill.svg') no-repeat center;
+        -webkit-mask: url('https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/volume-up-fill.svg') no-repeat center;
+    }
+
+    .fullscreen-icon {
+        mask: url('https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/fullscreen.svg') no-repeat center;
+        -webkit-mask: url('https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/fullscreen.svg') no-repeat center;
+    }
+
 </style>
 </head>
 
@@ -94,16 +150,37 @@
 
 <div class="wrapper">
 
-    <!-- TITLE ABOVE IMAGE -->
+    <!-- TITLE -->
     <div class="title">
         <h2>Your Video Title</h2>
         <p>2.1M views • 2 days ago</p>
     </div>
 
-    <!-- CLICKABLE VIDEO -->
+    <!-- VIDEO -->
     <a href="https://your-url.com" class="video-container">
         <img src="https://cdn.aceimg.com/cf1eff43f.jpg" alt="Video Thumbnail">
+
         <div class="play-button"></div>
+
+        <!-- FAKE PLAYER CONTROLS -->
+        <div class="controls-overlay">
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+
+            <div class="controls-row">
+                <div class="left">
+                    <div class="icon play-icon"></div>
+                    <span>0:00 / 2:14</span>
+                </div>
+
+                <div class="right">
+                    <div class="icon volume-icon"></div>
+                    <div class="icon fullscreen-icon"></div>
+                </div>
+            </div>
+        </div>
+
     </a>
 
 </div>
