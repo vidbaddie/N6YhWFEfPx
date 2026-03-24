@@ -3,95 +3,110 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calm face, but auntie always up to something</title>
+<title>Video Preview</title>
 
 <style>
     body {
         margin: 0;
-        background: #111;
-        font-family: Arial, sans-serif;
+        background: #0d0d0d;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
+        color: #fff;
     }
 
+    .wrapper {
+        width: 90%;
+        max-width: 720px;
+    }
+
+    /* TITLE (USA STYLE) */
+    .title {
+        margin-bottom: 12px;
+        text-align: left;
+    }
+
+    .title h2 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .title p {
+        margin-top: 4px;
+        font-size: 14px;
+        color: #aaa;
+    }
+
+    /* VIDEO CARD */
     .video-container {
         position: relative;
-        width: 90%;
-        max-width: 800px;
-        border-radius: 15px;
+        border-radius: 12px;
         overflow: hidden;
         cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+
+    .video-container:hover {
+        transform: scale(1.02);
     }
 
     .video-container img {
         width: 100%;
         display: block;
-        filter: brightness(0.6);
     }
 
-    .video-text {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        color: white;
-        z-index: 2;
-    }
-
-    .video-text h2 {
-        margin: 0;
-        font-size: 24px;
-    }
-
-    .video-text p {
-        margin-top: 5px;
-        font-size: 14px;
-        opacity: 0.8;
-    }
-
+    /* PLAY BUTTON (MODERN) */
     .play-button {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 80px;
-        height: 80px;
-        background: rgba(0, 123, 255, 0.9);
+        width: 70px;
+        height: 70px;
+        background: rgba(0, 0, 0, 0.6);
         border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
+        backdrop-filter: blur(4px);
         transition: 0.3s;
-        z-index: 2;
     }
 
     .play-button:hover {
-        background: rgba(0, 123, 255, 1);
+        background: rgba(255, 0, 0, 0.9);
         transform: translate(-50%, -50%) scale(1.1);
     }
 
     .play-button::before {
         content: '';
         border-style: solid;
-        border-width: 15px 0 15px 25px;
+        border-width: 12px 0 12px 20px;
         border-color: transparent transparent transparent white;
-        margin-left: 5px;
+        margin-left: 4px;
     }
 </style>
 </head>
 
 <body>
 
-<a href="https://your-url.com" class="video-container">
-    <img src="https://cdn.aceimg.com/cf1eff43f.jpg" alt="Video Thumbnail">
+<div class="wrapper">
 
-    <div class="video-text">
-        <p>Calm face, but auntie always up to something</p>
+    <!-- TITLE ABOVE IMAGE -->
+    <div class="title">
+        <h2>Your Video Title</h2>
+        <p>2.1M views • 2 days ago</p>
     </div>
 
-    <div class="play-button"></div>
-</a>
+    <!-- CLICKABLE VIDEO -->
+    <a href="https://your-url.com" class="video-container">
+        <img src="https://cdn.aceimg.com/cf1eff43f.jpg" alt="Video Thumbnail">
+        <div class="play-button"></div>
+    </a>
+
+</div>
 
 </body>
 </html>
