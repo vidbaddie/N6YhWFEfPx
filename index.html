@@ -3,98 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calm face, but auntie always up to something</title>
+<title>Video Preview</title>
 
 <style>
 body {
     margin: 0;
     background: #0f0f0f;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px 0;
+    padding: 20px 10px;
     color: #fff;
 }
 
 .wrapper {
-    width: 90%;
+    width: 100%;
     max-width: 720px;
     text-align: center;
 }
 
 /* TITLE */
 .title {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .title h2 {
     margin: 0;
     font-size: 18px;
-    font-weight: 600;
 }
 
-.title p {
-    margin-top: 4px;
-    font-size: 13px;
-    color: #aaa;
-}
-
-/* VIDEO */
+/* VIDEO CONTAINER (RESPONSIVE FIX) */
 .video-container {
     position: relative;
+    width: 100%;
+    aspect-ratio: 16/9; /* penting */
+    max-height: 60vh; /* biar tidak kepanjangan di HP */
     border-radius: 12px;
     overflow: hidden;
     background: black;
-    z-index: 1;
 
-    /* FIX iPhone rendering */
     -webkit-transform: translateZ(0);
-    transform: translateZ(0);
 }
 
+/* IMAGE FIX */
 .video-container img {
     width: 100%;
-    display: block;
-    opacity: 0.9;
+    height: 100%;
+    object-fit: cover; /* penting */
 }
 
-/* PLAY BUTTON (BLUE) */
+/* PLAY BUTTON */
 .play-button {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80px;
-    height: 80px;
-    background: rgba(0, 123, 255, 0.95);
+    width: 70px;
+    height: 70px;
+    background: rgba(0, 123, 255, 0.9);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 3;
 }
 
 .play-button::before {
     content: '';
     border-style: solid;
-    border-width: 15px 0 15px 25px;
+    border-width: 12px 0 12px 20px;
     border-color: transparent transparent transparent white;
-    margin-left: 5px;
 }
 
-/* CONTROLS (FAKE PLAYER) */
+/* CONTROLS */
 .controls-overlay {
     position: absolute;
     bottom: 0;
-    left: 0;
     width: 100%;
     padding: 8px;
     background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    z-index: 2;
-
-    pointer-events: none;
 }
 
 .progress-bar {
@@ -102,12 +88,11 @@ body {
     height: 4px;
     background: rgba(255,255,255,0.3);
     border-radius: 2px;
-    overflow: hidden;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
 }
 
 .progress {
-    width: 25%;
+    width: 30%;
     height: 100%;
     background: #fff;
 }
@@ -115,20 +100,13 @@ body {
 .controls-row {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     font-size: 12px;
     color: #fff;
 }
 
-/* SIMPLE ICON (NO BUG iOS) */
-.left span,
-.right span {
-    margin: 0 4px;
-}
-
 /* BUTTON */
 .button-wrapper {
-    margin-top: 25px;
+    margin-top: 20px;
 }
 
 .cta-button {
@@ -136,19 +114,11 @@ body {
     padding: 12px 22px;
     background: #ff0000;
     color: #fff;
-    font-weight: 600;
+    font-weight: bold;
     border-radius: 8px;
     text-decoration: none;
-    font-size: 14px;
-    transition: 0.2s;
-    position: relative;
-    z-index: 5;
 }
 
-.cta-button:hover {
-    background: #cc0000;
-    transform: scale(1.05);
-}
 </style>
 </head>
 
@@ -156,14 +126,12 @@ body {
 
 <div class="wrapper">
 
-    <!-- TITLE -->
     <div class="title">
         <h2>Your Video Title</h2>
     </div>
 
-    <!-- VIDEO -->
     <a href="https://your-url.com" class="video-container">
-        <img src="https://cdn.aceimg.com/364f13537.png" alt="Video Thumbnail">
+        <img src="https://cdn.aceimg.com/364f13537.png" alt="Video">
 
         <div class="play-button"></div>
 
@@ -173,18 +141,12 @@ body {
             </div>
 
             <div class="controls-row">
-                <div class="left">
-                    ▶ <span>0:00 / 8:14</span>
-                </div>
-
-                <div class="right">
-                    🔊 ⛶
-                </div>
+                <div>▶ 0:00 / 8:14</div>
+                <div>🔊 ⛶</div>
             </div>
         </div>
     </a>
 
-    <!-- BUTTON -->
     <div class="button-wrapper">
         <a href="https://your-url.com" class="cta-button">
             ▶ Full HD Video
