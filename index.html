@@ -20,12 +20,11 @@
     .wrapper {
         width: 90%;
         max-width: 720px;
+        text-align: center;
     }
 
-    /* TITLE CENTER */
     .title {
         margin-bottom: 12px;
-        text-align: center;
     }
 
     .title h2 {
@@ -54,7 +53,7 @@
         opacity: 0.85;
     }
 
-    /* BLUE PLAY BUTTON */
+    /* PLAY BUTTON */
     .play-button {
         position: absolute;
         top: 50%;
@@ -113,12 +112,11 @@
         display: flex;
         align-items: center;
         gap: 6px;
-        color: #fff; /* TIMER PUTIH */
+        color: #fff;
     }
 
     .right {
         display: flex;
-        align-items: center;
         gap: 10px;
     }
 
@@ -128,7 +126,6 @@
         background: #fff;
         mask-size: cover;
         -webkit-mask-size: cover;
-        opacity: 0.9;
     }
 
     .play-icon {
@@ -146,6 +143,25 @@
         -webkit-mask: url('https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/fullscreen.svg') no-repeat center;
     }
 
+    /* RED BUTTON */
+    .cta-button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 12px 22px;
+        background: #ff0000;
+        color: #fff;
+        font-weight: 600;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 14px;
+        transition: 0.2s;
+    }
+
+    .cta-button:hover {
+        background: #cc0000;
+        transform: scale(1.05);
+    }
+
 </style>
 </head>
 
@@ -153,12 +169,10 @@
 
 <div class="wrapper">
 
-    <!-- TITLE CENTER -->
     <div class="title">
         <h2>Calm face, but auntie always up to something</h2>
     </div>
 
-    <!-- VIDEO -->
     <a href="https://your-url.com" class="video-container">
         <img src="https://cdn.aceimg.com/981ae3cb4.png" alt="Video Thumbnail">
 
@@ -181,7 +195,11 @@
                 </div>
             </div>
         </div>
+    </a>
 
+    <!-- BUTTON FULL HD -->
+    <a href="https://your-url.com" class="cta-button">
+        ▶ Full HD Video
     </a>
 
 </div>
