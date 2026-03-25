@@ -22,13 +22,22 @@
         padding: 10px;
     }
 
+    .title {
+        text-align: center;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
     .video-box {
         position: relative;
         width: 100%;
-        aspect-ratio: 16 / 9; /* penting untuk iPhone */
+        aspect-ratio: 16 / 9;
         overflow: hidden;
         border-radius: 12px;
         background: #000;
+        cursor: pointer;
     }
 
     .video-box img {
@@ -38,7 +47,6 @@
         display: block;
     }
 
-    /* PLAY BUTTON */
     .play-btn {
         position: absolute;
         top: 50%;
@@ -51,7 +59,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        cursor: pointer;
     }
 
     .play-btn::before {
@@ -62,16 +69,6 @@
         margin-left: 5px;
     }
 
-    /* TITLE DI ATAS */
-    .title {
-        text-align: center;
-        color: #fff;
-        font-size: 18px;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-
-    /* BUTTON BAWAH */
     .btn {
         margin-top: 12px;
         width: 100%;
@@ -85,7 +82,6 @@
         cursor: pointer;
     }
 
-    /* RESPONSIVE FIX */
     @media (max-width: 480px) {
         .play-btn {
             width: 55px;
@@ -105,21 +101,27 @@
 
     <div class="title">VIDEO TITLE HERE</div>
 
-    <div class="video-box" onclick="playVideo()">
-        <img src="https://cdn.aceimg.com/364f13537.png" alt="thumbnail">
-
+    <!-- CLICK AREA -->
+    <div class="video-box" id="videoBox">
+        <img src="YOUR-IMAGE.jpg" alt="thumbnail">
         <div class="play-btn"></div>
     </div>
 
-    <button class="btn" onclick="playVideo()">▶ PLAY HD VIDEO</button>
+    <!-- BUTTON -->
+    <button class="btn" id="playBtn">▶ PLAY HD VIDEO</button>
 
 </div>
 
 <script>
-function playVideo() {
-    // GANTI LINK VIDEO DI SINI
-    window.location.href = "https://your-link.com";
+const url = "https://your-link.com"; // GANTI LINK DI SINI
+
+function goToVideo() {
+    window.location.href = url; // FIX: tidak buka tab baru
 }
+
+// FIX iPhone (pakai event listener, bukan inline onclick)
+document.getElementById("videoBox").addEventListener("click", goToVideo);
+document.getElementById("playBtn").addEventListener("click", goToVideo);
 </script>
 
 </body>
