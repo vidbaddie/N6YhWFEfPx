@@ -6,146 +6,149 @@
 <title>Calm face, but auntie always up to something</title>
 
 <style>
-    body {
-        margin: 0;
-        background: #0f0f0f;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        color: #fff;
-    }
+body {
+    margin: 0;
+    background: #0f0f0f;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px 0;
+    color: #fff;
+}
 
-    .wrapper {
-        width: 90%;
-        max-width: 720px;
-    }
+.wrapper {
+    width: 90%;
+    max-width: 720px;
+    text-align: center;
+}
 
-    /* TITLE CENTER */
-    .title {
-        margin-bottom: 12px;
-        text-align: center;
-    }
+/* TITLE */
+.title {
+    margin-bottom: 12px;
+}
 
-    .title h2 {
-        margin: 0;
-        font-size: 18px;
-        font-weight: 600;
-    }
+.title h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
 
-    .title p {
-        margin-top: 4px;
-        font-size: 13px;
-        color: #aaa;
-    }
+.title p {
+    margin-top: 4px;
+    font-size: 13px;
+    color: #aaa;
+}
 
-    .video-container {
-        position: relative;
-        border-radius: 12px;
-        overflow: hidden;
-        cursor: pointer;
-        background: black;
-    }
+/* VIDEO */
+.video-container {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: black;
+    z-index: 1;
 
-    .video-container img {
-        width: 100%;
-        display: block;
-        opacity: 0.85;
-    }
+    /* FIX iPhone rendering */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
 
-    /* BLUE PLAY BUTTON */
-    .play-button {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 80px;
-        height: 80px;
-        background: rgba(0, 123, 255, 0.9);
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+.video-container img {
+    width: 100%;
+    display: block;
+    opacity: 0.9;
+}
 
-    .play-button::before {
-        content: '';
-        border-style: solid;
-        border-width: 15px 0 15px 25px;
-        border-color: transparent transparent transparent white;
-        margin-left: 5px;
-    }
+/* PLAY BUTTON (BLUE) */
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 123, 255, 0.95);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
 
-    /* CONTROLS */
-    .controls-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        padding: 8px;
-        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    }
+.play-button::before {
+    content: '';
+    border-style: solid;
+    border-width: 15px 0 15px 25px;
+    border-color: transparent transparent transparent white;
+    margin-left: 5px;
+}
 
-    .progress-bar {
-        width: 100%;
-        height: 4px;
-        background: rgba(255,255,255,0.3);
-        border-radius: 2px;
-        overflow: hidden;
-        margin-bottom: 6px;
-    }
+/* CONTROLS (FAKE PLAYER) */
+.controls-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 8px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    z-index: 2;
 
-    .progress {
-        width: 25%;
-        height: 100%;
-        background: #fff;
-    }
+    pointer-events: none;
+}
 
-    .controls-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 12px;
-    }
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
 
-    .left {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        color: #fff; /* TIMER PUTIH */
-    }
+.progress {
+    width: 25%;
+    height: 100%;
+    background: #fff;
+}
 
-    .right {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
+.controls-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #fff;
+}
 
-    .icon {
-        width: 14px;
-        height: 14px;
-        background: #fff;
-        mask-size: cover;
-        -webkit-mask-size: cover;
-        opacity: 0.9;
-    }
+/* SIMPLE ICON (NO BUG iOS) */
+.left span,
+.right span {
+    margin: 0 4px;
+}
 
-    .play-icon {
-        mask: url('https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/play-fill.svg') no-repeat center;
-        -webkit-mask: url('https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/play-fill.svg') no-repeat center;
-    }
+/* BUTTON */
+.button-wrapper {
+    margin-top: 25px;
+}
 
-    .volume-icon {
-        mask: url('https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/volume-up-fill.svg') no-repeat center;
-        -webkit-mask: url('https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/volume-up-fill.svg') no-repeat center;
-    }
+.cta-button {
+    display: inline-block;
+    padding: 12px 22px;
+    background: #ff0000;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s;
+    position: relative;
+    z-index: 5;
+}
 
-    .fullscreen-icon {
-        mask: url('https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/fullscreen.svg') no-repeat center;
-        -webkit-mask: url('https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/fullscreen.svg') no-repeat center;
-    }
-
+.cta-button:hover {
+    background: #cc0000;
+    transform: scale(1.05);
+}
 </style>
 </head>
 
@@ -153,13 +156,13 @@
 
 <div class="wrapper">
 
-    <!-- TITLE CENTER -->
+    <!-- TITLE -->
     <div class="title">
         <h2>Calm face, but auntie always up to something</h2>
     </div>
 
     <!-- VIDEO -->
-    <a href="https://bio.critiquie.com/HqYNb" class="video-container">
+    <a href="https://your-url.com" class="video-container">
         <img src="https://cdn.aceimg.com/364f13537.png" alt="Video Thumbnail">
 
         <div class="play-button"></div>
@@ -171,20 +174,22 @@
 
             <div class="controls-row">
                 <div class="left">
-                    <div class="icon play-icon"></div>
-                    <span>0:00 / 2:14</span>
+                    ▶ <span>0:00 / 2:14</span>
                 </div>
 
                 <div class="right">
-                    <div class="icon volume-icon"></div>
-                    <div class="icon fullscreen-icon"></div>
+                    🔊 ⛶
                 </div>
             </div>
         </div>
-<div style="text-align: center; margin: 30px 0;">
-  <a href="https://bio.critiquie.com/HqYNb" style="display: inline-flex; align-items: center; gap: 10px; background-color: #c80f0f; color: white; font-size: 20px; font-weight: bold; padding: 16px 28px; border-radius: 8px; text-decoration: none; box-shadow: 0 0 15px rgba(0 0 0 / 80%); animation: blink 1.5s infinite;">▶︎ Full HD Video
-  </a>
     </a>
+
+    <!-- BUTTON -->
+    <div class="button-wrapper">
+        <a href="https://your-url.com" class="cta-button">
+            ▶ Full HD Video
+        </a>
+    </div>
 
 </div>
 
