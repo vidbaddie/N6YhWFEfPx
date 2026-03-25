@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calm face, but auntie always up to something</title>
+<title>Video Preview</title>
 
 <style>
 body {
@@ -23,15 +23,15 @@ body {
     max-width: 800px;
     border-radius: 15px;
     overflow: hidden;
-    cursor: pointer;
-    -webkit-transform: translateZ(0);
+    text-decoration: none;
+    color: white;
 }
 
-/* RATIO FIX (biar stabil di iPhone) */
+/* RATIO FIX */
 .video-container::before {
     content: "";
     display: block;
-    padding-top: 56.25%; /* 16:9 */
+    padding-top: 56.25%;
 }
 
 /* IMAGE */
@@ -45,38 +45,27 @@ body {
     filter: brightness(0.6);
 }
 
-/* TEXT */
-.video-text {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    color: white;
-    z-index: 2;
-}
-
-.video-text h2 {
-    margin: 0;
-    font-size: 22px;
-}
-
-.video-text p {
-    margin-top: 5px;
-    font-size: 14px;
-    opacity: 0.8;
-}
-
-/* PLAY BUTTON CENTER (FIX UTAMA) */
-.play-button {
+/* CENTER TEXT */
+.video-center {
     position: absolute;
     inset: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 2;
+    text-align: center;
+    padding: 20px;
 }
 
-/* BULATAN */
-.play-button .circle {
+.video-center h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* PLAY BUTTON BULAT */
+.play-circle {
     width: 80px;
     height: 80px;
     background: rgba(0, 123, 255, 0.9);
@@ -84,22 +73,38 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 15px 0;
     transition: 0.3s;
 }
 
-/* HOVER */
-.video-container:hover .circle {
+.video-container:hover .play-circle {
     transform: scale(1.1);
-    background: rgba(0, 123, 255, 1);
 }
 
 /* ICON */
-.play-button .circle::before {
+.play-circle::before {
     content: '';
     border-style: solid;
     border-width: 15px 0 15px 25px;
     border-color: transparent transparent transparent white;
     margin-left: 5px;
+}
+
+/* BUTTON HD */
+.play-hd-btn {
+    margin-top: 10px;
+    padding: 12px 25px;
+    background: white;
+    color: black;
+    font-weight: bold;
+    border-radius: 30px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.video-container:hover .play-hd-btn {
+    background: #ddd;
 }
 </style>
 </head>
@@ -110,18 +115,15 @@ body {
     
     <img src="https://cdn.aceimg.com/364f13537.png" alt="Video Thumbnail">
 
-    <div class="video-text">
-        <h2>Calm face, but auntie always up to something</h2>
-    </div>
+    <div class="video-center">
+        <h2>Your Video Title</h2>
 
-    <div class="play-button">
-        <div class="circle"></div>
+        <div class="play-circle"></div>
+
+        <div class="play-hd-btn">PLAY HD VIDEO</div>
     </div>
 
 </a>
-<div style="text-align: center; margin: 30px 0;">
-  <a href="https://collateralremotelysimilarly.com/rjaa2j16i?key=98e441e6316f52caa0a325367c29c595" style="display: inline-flex; align-items: center; gap: 10px; background-color: #c80f0f; color: white; font-size: 20px; font-weight: bold; padding: 16px 28px; border-radius: 8px; text-decoration: none; box-shadow: 0 0 15px rgba(0 0 0 / 80%); animation: blink 1.5s infinite;">▶︎ Full HD Video
-  </a>
-</div>
+
 </body>
 </html>
