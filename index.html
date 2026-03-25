@@ -34,6 +34,7 @@
     width: 100%;
     border-radius: 12px;
     overflow: hidden;
+    cursor: pointer; /* FIX: cursor jadi tangan */
   }
 
   .video-card img {
@@ -54,6 +55,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer; /* FIX tambahan */
   }
 
   .play-button:after {
@@ -64,7 +66,6 @@
     margin-left: 5px;
   }
 
-  /* Tombol seperti gambar */
   .btn-wrapper {
     margin-top: 20px;
     display: flex;
@@ -82,6 +83,7 @@
     text-decoration: none;
     font-weight: bold;
     font-size: 14px;
+    cursor: pointer; /* biar tombol juga konsisten */
   }
 
   .btn-icon {
@@ -106,9 +108,9 @@
 <div class="container">
   <div class="title"><h3>Auntie energy? unpredictable and addictive</h3></div>
 <br>
+
   <div class="video-card" onclick="goToLink()">
     <img src="https://cdn.aceimg.com/6ca9b97c8.png" alt="preview">
-    <br>
     <div class="play-button"></div>
   </div>
 
